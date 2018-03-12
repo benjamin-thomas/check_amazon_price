@@ -3,10 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
-	"io"
 	"log"
-	"net/http"
-	"os"
 	"strconv"
 	"strings"
 	"time"
@@ -45,24 +42,6 @@ func priceWarning1(header string, price float64) {
 
 func priceWarning2(header string, from, to float64) {
 	log.Printf("%s (from %.2f to %.2f)\n", header, from, to)
-}
-
-func downloadFile(url, filepath string) error {
-	fmt.Println("Downloading:", filepath)
-	resp, err := http.Get(url)
-	if err != nil {
-		return err
-	}
-	defer resp.Body.Close()
-
-	f, err := os.Create(filepath)
-	if err != nil {
-		return err
-	}
-	defer f.Close()
-
-	_, err = io.Copy(f, resp.Body)
-	return err
 }
 
 func getDocument(url string) *goquery.Document {
