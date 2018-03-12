@@ -93,7 +93,7 @@ func getPrice(url string) float64 {
 
 func main() {
 	url := flag.String("url", "", "Amazon URL to track")
-	every := flag.Duration("every", time.Duration(5*time.Minute), "Amount of time to wait between price checks")
+	every := flag.Duration("every", time.Duration(30*time.Minute), "Amount of time to wait between price checks")
 
 	flag.Parse()
 
