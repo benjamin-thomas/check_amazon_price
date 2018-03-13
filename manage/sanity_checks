@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -e
+set -x
+
+go vet -all -shadow .
+golint
+megacheck
